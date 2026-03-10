@@ -6,116 +6,95 @@
     <title>WhaleRadar - Splash Screen</title>
     <style>
         :root {
-            --primary-green: #4fd195;
+            --primary-green: #7fd0a5; /* اللون المستخرج من الصورة */
             --bg-color: #f7f6fb;
-            --text-white: #ffffff;
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            width: 360px; /* مقاس الإضافة */
+            width: 360px;
             height: 580px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            overflow: hidden;
+            justify-content: space-between; /* لتوزيع العناصر توب، سنتر، بوتوم */
         }
 
-        /* حاوية العناصر لتوزيعها مثل الصورة */
         .container {
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            height: 100%;
-            padding: 40px 0 60px 0;
+            padding-top: 50px; /* مسافة اللوجو العلوي */
+            padding-bottom: 80px; /* مسافة الزر السفلي */
             box-sizing: border-box;
         }
 
-        /* اللوجو العلوي */
-        .top-logo {
-            width: 80px;
-            margin-bottom: 20px;
+        /* اللوجو العلوي (البرق) */
+        .top-logo-svg {
+            width: 70px;
+            height: auto;
+            margin-bottom: 60px;
         }
 
-        /* أيقونة الحوت في المنتصف */
-        .whale-container {
-            flex-grow: 1;
+        /* الحوت في المنتصف */
+        .whale-wrapper {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 280px;
         }
 
         .whale-svg {
-            width: 100%;
-            filter: drop-shadow(0 10px 15px rgba(79, 209, 149, 0.2));
+            width: 250px; /* حجم الحوت كما يظهر في الصورة */
+            height: auto;
         }
 
-        /* زر Get Started */
-        .btn-container {
+        /* الزر السفلي */
+        .btn-wrapper {
             width: 100%;
             display: flex;
             justify-content: center;
         }
 
         .get-started-btn {
-            background: linear-gradient(to right, #54b489, #7fd8ab);
+            background: linear-gradient(135deg, #7fd0a5 0%, #68c091 100%);
             color: white;
             border: none;
-            padding: 14px 70px;
-            border-radius: 30px;
+            padding: 16px 80px;
+            border-radius: 40px;
             font-size: 18px;
             font-weight: 500;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-transform: none;
-        }
-
-        .get-started-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(84, 180, 137, 0.3);
-        }
-
-        .get-started-btn:active {
-            transform: scale(0.98);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="top-logo">
+        <div class="top-logo-svg">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 10L10 50H35L20 90L85 35H55L75 10H40Z" fill="#4fd195"/>
+                <path d="M40 10L10 50H35L20 90L85 35H55L75 10H40Z" fill="#7fd0a5"/>
             </svg>
         </div>
 
-        <div class="whale-container">
-            <svg class="whale-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="whaleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#4fd195;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#a8e6cf;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <path d="M10,80 Q30,40 80,45 T160,60 Q190,70 180,100 Q170,130 120,125 T40,110 Q10,100 10,80 Z" fill="url(#whaleGrad)" opacity="0.9"/>
-                <path d="M10,80 Q-10,50 10,40 Q25,50 20,80 Z" fill="#4fd195"/>
-                <path d="M10,80 Q-10,110 10,120 Q25,110 20,80 Z" fill="#4fd195"/>
-                <circle cx="100" cy="75" r="5" fill="white" opacity="0.5"/>
-                <circle cx="130" cy="85" r="4" fill="white" opacity="0.3"/>
-                <circle cx="70" cy="85" r="4" fill="white" opacity="0.3"/>
-                <line x1="100" y1="75" x2="130" y2="85" stroke="white" stroke-width="1" opacity="0.4"/>
-                <line x1="100" y1="75" x2="70" y2="85" stroke="white" stroke-width="1" opacity="0.4"/>
+        <div class="whale-wrapper">
+             <svg class="whale-svg" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20,50 Q40,10 100,20 T180,40 Q200,60 180,80 T100,70 Q40,80 20,50 Z" fill="#7fd0a5" opacity="0.8"/>
+                <circle cx="100" cy="45" r="3" fill="white" opacity="0.6"/>
+                <circle cx="120" cy="40" r="3" fill="white" opacity="0.6"/>
+                <path d="M20,50 Q5,30 10,20 Q20,30 20,50 Z" fill="#7fd0a5"/>
+                <path d="M20,50 Q5,70 10,80 Q20,70 20,50 Z" fill="#7fd0a5"/>
             </svg>
         </div>
 
-        <div class="btn-container">
+        <div class="btn-wrapper">
             <button class="get-started-btn">Get Started</button>
         </div>
     </div>
