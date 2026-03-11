@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edge - Financial Freedom</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -70,6 +70,144 @@
             stroke: #374151;
             stroke-width: 2;
             fill: none;
+        }
+
+        /* ========== القائمة المنبثقة ========== */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background: #1a1a1a;
+            z-index: 201;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-panel.active {
+            transform: translateX(0);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid #333;
+        }
+
+        .menu-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .menu-close {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .menu-close:hover {
+            background: #333;
+        }
+
+        .menu-close svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .menu-search {
+            padding: 20px 24px;
+            border-bottom: 1px solid #333;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            background: #4a4a4a;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 50px 16px 20px;
+            font-size: 16px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #ccc;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            stroke: #ccc;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .menu-items {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 20px 24px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #333;
+            transition: background 0.2s;
+        }
+
+        .menu-item:hover {
+            background: #333;
+        }
+
+        .menu-item.get-started {
+            color: #10b981;
         }
 
         /* ========== الصفحة الأولى - الترحيب ========== */
@@ -423,6 +561,27 @@
                 height: 42px;
             }
 
+            .menu-panel {
+                max-width: 520px;
+            }
+
+            .menu-header {
+                padding: 20px 32px;
+            }
+
+            .menu-logo {
+                height: 38px;
+            }
+
+            .menu-search {
+                padding: 24px 32px;
+            }
+
+            .menu-item {
+                padding: 24px 32px;
+                font-size: 20px;
+            }
+
             .logo-container img, .login-logo img {
                 width: 240px;
                 height: 240px;
@@ -501,6 +660,38 @@
     </style>
 </head>
 <body>
+    <!-- ========== القائمة المنبثقة ========== -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+    
+    <div class="menu-panel" id="menuPanel">
+        <div class="menu-header">
+            <img src="https://i.ibb.co/JFW12hJR/57570062-C5-CD-4-E81-A2-F2-DAF1-B6181-F9-B.png" alt="Edge" class="menu-logo">
+            <div class="menu-close" onclick="closeMenu()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="menu-search">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search Anything">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </div>
+        </div>
+        
+        <nav class="menu-items">
+            <a href="#" class="menu-item">About</a>
+            <a href="#" class="menu-item">Edge-ucation</a>
+            <a href="#" class="menu-item">Support</a>
+            <a href="#" class="menu-item">Events</a>
+            <a href="#" class="menu-item get-started" onclick="closeMenu(); showLogin();">Get Started</a>
+        </nav>
+    </div>
+
     <!-- ========== الهيدر العلوي ========== -->
     <header class="header">
         <div class="header-left">
@@ -513,7 +704,7 @@
                     <path d="M21 21l-4.35-4.35"/>
                 </svg>
             </div>
-            <div class="icon-btn">
+            <div class="icon-btn" onclick="openMenu()">
                 <svg viewBox="0 0 24 24">
                     <line x1="3" y1="6" x2="21" y2="6"/>
                     <line x1="3" y1="12" x2="21" y2="12"/>
@@ -623,6 +814,18 @@
     </section>
 
     <script>
+        function openMenu() {
+            document.getElementById('menuOverlay').classList.add('active');
+            document.getElementById('menuPanel').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            document.getElementById('menuOverlay').classList.remove('active');
+            document.getElementById('menuPanel').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         function showLogin() {
             document.getElementById('welcomePage').classList.add('hidden');
             document.getElementById('loginPage').classList.add('active');
