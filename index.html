@@ -1,103 +1,497 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhaleRadar - Splash Screen</title>
+    <title>Edge - Financial Freedom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-green: #7fd0a5; /* اللون المستخرج من الصورة */
-            --bg-color: #f7f6fb;
-        }
-
-        body, html {
+        * {
             margin: 0;
             padding: 0;
-            width: 360px;
-            height: 580px;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--bg-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between; /* لتوزيع العناصر توب، سنتر، بوتوم */
-        }
-
-        .container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 50px; /* مسافة اللوجو العلوي */
-            padding-bottom: 80px; /* مسافة الزر السفلي */
             box-sizing: border-box;
         }
 
-        /* اللوجو العلوي (البرق) */
-        .top-logo-svg {
-            width: 70px;
-            height: auto;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== الصفحة الأولى - الترحيب ========== */
+        .welcome-page {
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 24px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .welcome-page.hidden {
+            display: none;
+        }
+
+        /* اللغو الأول - كبير */
+        .logo-container {
             margin-bottom: 60px;
         }
 
-        /* الحوت في المنتصف */
-        .whale-wrapper {
+        .logo-container img {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.1));
+        }
+
+        /* العنوان */
+        .title {
+            font-size: 44px;
+            font-weight: 300;
+            color: #1a1a1a;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .title .highlight {
+            color: #10b981;
+            font-weight: 400;
+        }
+
+        /* الوصف */
+        .subtitle {
+            font-size: 17px;
+            color: #4b5563;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 80px;
+            max-width: 340px;
+        }
+
+        /* الزر الأخضر */
+        .btn-primary {
+            background: linear-gradient(135deg, #7db889 0%, #6aa076 100%);
+            color: white;
+            border: none;
+            padding: 18px 60px;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(125, 184, 137, 0.35);
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(125, 184, 137, 0.45);
+        }
+
+        /* الرابط السفلي */
+        .footer-text {
+            font-size: 15px;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .footer-text a {
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .footer-text a:hover {
+            color: #059669;
+        }
+
+        /* ========== صفحة تسجيل الدخول ========== */
+        .login-page {
+            width: 100%;
+            max-width: 450px;
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #f8f9fa;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .login-page.active {
+            display: flex;
+        }
+
+        /* الهيدر */
+        .login-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+        }
+
+        .back-btn {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .back-btn svg {
+            width: 26px;
+            height: 26px;
+            stroke: #1a1a1a;
+            stroke-width: 2;
+        }
+
+        .help-link {
+            font-size: 17px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        /* محتوى تسجيل الدخول */
+        .login-content {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 28px 50px;
+        }
+
+        /* اللغو الثاني - كبير */
+        .login-logo {
+            margin-bottom: 55px;
+        }
+
+        .login-logo img {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.1));
+        }
+
+        /* الحقول */
+        .input-group {
+            width: 100%;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .input-field {
+            width: 100%;
+            background: #f0f2f5;
+            border: none;
+            border-radius: 18px;
+            padding: 20px 55px 20px 22px;
+            font-size: 17px;
+            color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-field::placeholder {
+            color: #6b7280;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 0 2.5px rgba(16, 185, 129, 0.15);
+        }
+
+        /* أيقونات الحقول */
+        .input-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .whale-svg {
-            width: 250px; /* حجم الحوت كما يظهر في الصورة */
-            height: auto;
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            color: #10b981;
         }
 
-        /* الزر السفلي */
-        .btn-wrapper {
+        .eye-icon {
+            width: 24px;
+            height: 24px;
+            color: #6b7280;
+            cursor: pointer;
+        }
+
+        /* زر تسجيل الدخول - غير نشط */
+        .btn-login {
             width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .get-started-btn {
-            background: linear-gradient(135deg, #7fd0a5 0%, #68c091 100%);
+            background: #c8ddd4;
             color: white;
             border: none;
-            padding: 16px 80px;
-            border-radius: 40px;
-            font-size: 18px;
+            padding: 18px;
+            font-size: 17px;
             font-weight: 500;
+            border-radius: 50px;
+            cursor: not-allowed;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        /* زر تسجيل الدخول - نشط (أخضر) */
+        .btn-login.active {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            letter-spacing: 0.5px;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-login.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.45);
+        }
+
+        /* زر إنشاء حساب */
+        .btn-create {
+            width: 100%;
+            background: #e5e7eb;
+            color: #1a1a1a;
+            border: none;
+            padding: 18px;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 24px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .btn-create:hover {
+            background: #d1d5db;
+        }
+
+        /* نسيت كلمة المرور */
+        .forgot-link {
+            color: #10b981;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 50px;
+            cursor: pointer;
+        }
+
+        .forgot-link:hover {
+            color: #059669;
+        }
+
+        /* QR Code */
+        .qr-code {
+            width: 70px;
+            height: 70px;
+            margin-top: auto;
+        }
+
+        .qr-code svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* تأثيرات */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-content > * {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .login-logo { animation-delay: 0.1s; }
+        .input-group:nth-child(2) { animation-delay: 0.2s; }
+        .input-group:nth-child(3) { animation-delay: 0.3s; }
+        .btn-login { animation-delay: 0.4s; }
+        .btn-create { animation-delay: 0.5s; }
+        .forgot-link { animation-delay: 0.6s; }
+        .qr-code { animation-delay: 0.7s; }
+
+        /* توافق الحاسوب */
+        @media (min-width: 768px) {
+            .welcome-page, .login-page {
+                max-width: 480px;
+            }
+            
+            .logo-container img, .login-logo img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .title {
+                font-size: 48px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="top-logo-svg">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 10L10 50H35L20 90L85 35H55L75 10H40Z" fill="#7fd0a5"/>
-            </svg>
+    <!-- ========== الصفحة الأولى - الترحيب ========== -->
+    <div class="welcome-page" id="welcomePage">
+        <!-- اللغو الأول -->
+        <div class="logo-container">
+            <img src="https://i.ibb.co/Mk8KKTJ9/49-E2-B7-AD-63-C1-481-F-82-A1-D0827-AE9-AD11.png" alt="Edge Logo">
         </div>
 
-        <div class="whale-wrapper">
-             <svg class="whale-svg" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20,50 Q40,10 100,20 T180,40 Q200,60 180,80 T100,70 Q40,80 20,50 Z" fill="#7fd0a5" opacity="0.8"/>
-                <circle cx="100" cy="45" r="3" fill="white" opacity="0.6"/>
-                <circle cx="120" cy="40" r="3" fill="white" opacity="0.6"/>
-                <path d="M20,50 Q5,30 10,20 Q20,30 20,50 Z" fill="#7fd0a5"/>
-                <path d="M20,50 Q5,70 10,80 Q20,70 20,50 Z" fill="#7fd0a5"/>
-            </svg>
+        <h1 class="title">
+            Welcome to<br>
+            Financial <span class="highlight">Freedom</span>
+        </h1>
+
+        <p class="subtitle">
+            Edge is the open source tool you need to invest, secure, and put your crypto in action.
+        </p>
+
+        <button class="btn-primary" onclick="showLogin()">Get Started</button>
+
+        <p class="footer-text">
+            Already have an account? <a onclick="showLogin()">Sign in</a>
+        </p>
+    </div>
+
+    <!-- ========== صفحة تسجيل الدخول ========== -->
+    <div class="login-page" id="loginPage">
+        <div class="login-header">
+            <div class="back-btn" onclick="showWelcome()">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <a class="help-link">Aide</a>
         </div>
 
-        <div class="btn-wrapper">
-            <button class="get-started-btn">Get Started</button>
+        <div class="login-content">
+            <!-- اللغو الثاني -->
+            <div class="login-logo">
+                <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Edge Logo">
+            </div>
+
+            <!-- حقل اسم المستخدم -->
+            <div class="input-group">
+                <input type="text" class="input-field" placeholder="Nom d'utilisateur" id="usernameField" oninput="checkInputs()">
+                <span class="input-icon">
+                    <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </span>
+            </div>
+
+            <!-- حقل كلمة المرور -->
+            <div class="input-group">
+                <input type="password" class="input-field" placeholder="Mot de passe" id="passwordField" oninput="checkInputs()">
+                <span class="input-icon" onclick="togglePassword()">
+                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </span>
+            </div>
+
+            <!-- زر تسجيل الدخول -->
+            <button class="btn-login" id="loginBtn" disabled>Se connecter</button>
+
+            <!-- زر إنشاء حساب -->
+            <button class="btn-create">Créer un compte</button>
+
+            <!-- نسيت كلمة المرور -->
+            <a class="forgot-link">Mot de passe oublié</a>
+
+            <!-- QR Code -->
+            <div class="qr-code">
+                <svg viewBox="0 0 70 70" fill="none">
+                    <rect x="10" y="10" width="18" height="18" fill="#1a1a1a"/>
+                    <rect x="14" y="14" width="10" height="10" fill="white"/>
+                    <rect x="16" y="16" width="6" height="6" fill="#1a1a1a"/>
+                    
+                    <rect x="42" y="10" width="18" height="18" fill="#1a1a1a"/>
+                    <rect x="46" y="14" width="10" height="10" fill="white"/>
+                    <rect x="48" y="16" width="6" height="6" fill="#1a1a1a"/>
+                    
+                    <rect x="10" y="42" width="18" height="18" fill="#1a1a1a"/>
+                    <rect x="14" y="46" width="10" height="10" fill="white"/>
+                    <rect x="16" y="48" width="6" height="6" fill="#1a1a1a"/>
+                    
+                    <rect x="32" y="10" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="10" y="32" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="32" y="32" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="56" y="32" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="32" y="56" width="5" height="5" fill="#1a1a1a"/>
+                    
+                    <rect x="42" y="42" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="52" y="42" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="42" y="52" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="56" y="52" width="5" height="5" fill="#1a1a1a"/>
+                </svg>
+            </div>
         </div>
     </div>
 
+    <script>
+        function showLogin() {
+            document.getElementById('welcomePage').classList.add('hidden');
+            document.getElementById('loginPage').classList.add('active');
+        }
+
+        function showWelcome() {
+            document.getElementById('loginPage').classList.remove('active');
+            document.getElementById('welcomePage').classList.remove('hidden');
+        }
+
+        function togglePassword() {
+            const field = document.getElementById('passwordField');
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+
+        function checkInputs() {
+            const username = document.getElementById('usernameField').value.trim();
+            const password = document.getElementById('passwordField').value.trim();
+            const loginBtn = document.getElementById('loginBtn');
+
+            if (username.length > 0 && password.length > 0) {
+                loginBtn.classList.add('active');
+                loginBtn.disabled = false;
+            } else {
+                loginBtn.classList.remove('active');
+                loginBtn.disabled = true;
+            }
+        }
+    </script>
 </body>
 </html>
