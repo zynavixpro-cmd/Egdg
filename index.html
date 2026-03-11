@@ -16,21 +16,79 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #f8f9fa;
             min-height: 100vh;
+        }
+
+        /* ========== الهيدر العلوي ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .icon-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #374151;
+            stroke-width: 2;
+            fill: none;
         }
 
         /* ========== الصفحة الأولى - الترحيب ========== */
         .welcome-page {
             width: 100%;
-            max-width: 450px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 40px 24px;
+            padding: 100px 40px 60px;
             animation: fadeIn 0.5s ease;
         }
 
@@ -38,26 +96,26 @@
             display: none;
         }
 
-        /* اللغو الأول - كبير */
+        /* اللغو الأول - كبير جداً */
         .logo-container {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .logo-container img {
-            width: 160px;
-            height: 160px;
+            width: 200px;
+            height: 200px;
             object-fit: contain;
-            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
         }
 
         /* العنوان */
         .title {
-            font-size: 44px;
+            font-size: 56px;
             font-weight: 300;
             color: #1a1a1a;
-            line-height: 1.15;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
         .title .highlight {
@@ -67,12 +125,12 @@
 
         /* الوصف */
         .subtitle {
-            font-size: 17px;
+            font-size: 20px;
             color: #4b5563;
             font-weight: 400;
             line-height: 1.6;
-            margin-bottom: 80px;
-            max-width: 340px;
+            margin-bottom: 100px;
+            max-width: 480px;
         }
 
         /* الزر الأخضر */
@@ -80,25 +138,25 @@
             background: linear-gradient(135deg, #7db889 0%, #6aa076 100%);
             color: white;
             border: none;
-            padding: 18px 60px;
-            font-size: 17px;
+            padding: 20px 72px;
+            font-size: 18px;
             font-weight: 500;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(125, 184, 137, 0.35);
+            box-shadow: 0 10px 32px rgba(125, 184, 137, 0.4);
             transition: all 0.3s ease;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             font-family: 'Inter', sans-serif;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(125, 184, 137, 0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(125, 184, 137, 0.5);
         }
 
         /* الرابط السفلي */
         .footer-text {
-            font-size: 15px;
+            font-size: 17px;
             color: #6b7280;
             font-weight: 400;
         }
@@ -117,54 +175,16 @@
         /* ========== صفحة تسجيل الدخول ========== */
         .login-page {
             width: 100%;
-            max-width: 450px;
+            min-height: 100vh;
             display: none;
             flex-direction: column;
-            min-height: 100vh;
             background: #f8f9fa;
             animation: fadeIn 0.4s ease;
+            padding-top: 80px;
         }
 
         .login-page.active {
             display: flex;
-        }
-
-        /* الهيدر */
-        .login-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 24px;
-        }
-
-        .back-btn {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: background 0.2s;
-        }
-
-        .back-btn:hover {
-            background: #e5e7eb;
-        }
-
-        .back-btn svg {
-            width: 26px;
-            height: 26px;
-            stroke: #1a1a1a;
-            stroke-width: 2;
-        }
-
-        .help-link {
-            font-size: 17px;
-            color: #1a1a1a;
-            text-decoration: none;
-            font-weight: 400;
-            cursor: pointer;
         }
 
         /* محتوى تسجيل الدخول */
@@ -173,25 +193,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 28px 50px;
+            justify-content: center;
+            padding: 60px 40px 80px;
         }
 
-        /* اللغو الثاني - كبير */
+        /* اللغو الثاني - كبير جداً */
         .login-logo {
-            margin-bottom: 55px;
+            margin-bottom: 70px;
         }
 
         .login-logo img {
-            width: 160px;
-            height: 160px;
+            width: 200px;
+            height: 200px;
             object-fit: contain;
-            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
         }
 
         /* الحقول */
         .input-group {
             width: 100%;
-            margin-bottom: 18px;
+            max-width: 420px;
+            margin-bottom: 20px;
             position: relative;
         }
 
@@ -199,9 +221,9 @@
             width: 100%;
             background: #f0f2f5;
             border: none;
-            border-radius: 18px;
-            padding: 20px 55px 20px 22px;
-            font-size: 17px;
+            border-radius: 20px;
+            padding: 22px 60px 22px 26px;
+            font-size: 18px;
             color: #1a1a1a;
             font-family: 'Inter', sans-serif;
             font-weight: 400;
@@ -214,13 +236,13 @@
         }
 
         .input-field:focus {
-            box-shadow: 0 0 0 2.5px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
         }
 
         /* أيقونات الحقول */
         .input-icon {
             position: absolute;
-            right: 20px;
+            right: 22px;
             top: 50%;
             transform: translateY(-50%);
             display: flex;
@@ -229,14 +251,14 @@
         }
 
         .check-icon {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             color: #10b981;
         }
 
         .eye-icon {
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             color: #6b7280;
             cursor: pointer;
         }
@@ -244,16 +266,17 @@
         /* زر تسجيل الدخول - غير نشط */
         .btn-login {
             width: 100%;
+            max-width: 420px;
             background: #c8ddd4;
             color: white;
             border: none;
-            padding: 18px;
-            font-size: 17px;
+            padding: 20px;
+            font-size: 18px;
             font-weight: 500;
             border-radius: 50px;
             cursor: not-allowed;
-            margin-top: 28px;
-            margin-bottom: 14px;
+            margin-top: 32px;
+            margin-bottom: 16px;
             font-family: 'Inter', sans-serif;
             transition: all 0.3s;
         }
@@ -262,26 +285,27 @@
         .btn-login.active {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+            box-shadow: 0 10px 32px rgba(16, 185, 129, 0.4);
         }
 
         .btn-login.active:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(16, 185, 129, 0.5);
         }
 
         /* زر إنشاء حساب */
         .btn-create {
             width: 100%;
+            max-width: 420px;
             background: #e5e7eb;
             color: #1a1a1a;
             border: none;
-            padding: 18px;
-            font-size: 17px;
+            padding: 20px;
+            font-size: 18px;
             font-weight: 500;
             border-radius: 50px;
             cursor: pointer;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             font-family: 'Inter', sans-serif;
             transition: all 0.3s;
         }
@@ -294,9 +318,9 @@
         .forgot-link {
             color: #10b981;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 500;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             cursor: pointer;
         }
 
@@ -306,9 +330,8 @@
 
         /* QR Code */
         .qr-code {
-            width: 70px;
-            height: 70px;
-            margin-top: auto;
+            width: 80px;
+            height: 80px;
         }
 
         .qr-code svg {
@@ -325,13 +348,23 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        .welcome-page > * {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .logo-container { animation-delay: 0.1s; }
+        .title { animation-delay: 0.2s; }
+        .subtitle { animation-delay: 0.3s; }
+        .btn-primary { animation-delay: 0.4s; }
+        .footer-text { animation-delay: 0.5s; }
 
         .login-content > * {
             animation: fadeInUp 0.5s ease forwards;
@@ -345,27 +378,98 @@
         .forgot-link { animation-delay: 0.6s; }
         .qr-code { animation-delay: 0.7s; }
 
-        /* توافق الحاسوب */
-        @media (min-width: 768px) {
-            .welcome-page, .login-page {
+        /* توافق الحاسوب الكبير */
+        @media (min-width: 1024px) {
+            .header {
+                padding: 20px 60px;
+            }
+
+            .logo-container img, .login-logo img {
+                width: 240px;
+                height: 240px;
+            }
+
+            .title {
+                font-size: 64px;
+            }
+
+            .subtitle {
+                font-size: 22px;
+                max-width: 560px;
+            }
+
+            .input-group, .btn-login, .btn-create {
                 max-width: 480px;
             }
-            
-            .logo-container img, .login-logo img {
-                width: 180px;
-                height: 180px;
+        }
+
+        /* توافق الجوال */
+        @media (max-width: 640px) {
+            .header {
+                padding: 14px 20px;
             }
-            
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .header-right {
+                gap: 16px;
+            }
+
+            .welcome-page, .login-content {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .logo-container img, .login-logo img {
+                width: 160px;
+                height: 160px;
+            }
+
             .title {
-                font-size: 48px;
+                font-size: 40px;
+            }
+
+            .subtitle {
+                font-size: 17px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- ========== الهيدر العلوي ========== -->
+    <header class="header">
+        <div class="header-left">
+            <!-- اللغو الصغير في الهيدر -->
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+                <rect x="4" y="12" width="12" height="16" rx="2" fill="#10b981"/>
+                <rect x="18" y="4" width="10" height="20" rx="2" fill="#6ee7b7"/>
+            </svg>
+            <span class="logo-text">edge</span>
+        </div>
+        <div class="header-right">
+            <!-- أيقونة البحث -->
+            <div class="icon-btn">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </div>
+            <!-- أيقونة القائمة -->
+            <div class="icon-btn">
+                <svg viewBox="0 0 24 24">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
     <!-- ========== الصفحة الأولى - الترحيب ========== -->
     <div class="welcome-page" id="welcomePage">
-        <!-- اللغو الأول -->
+        <!-- اللغو الأول الكبير -->
         <div class="logo-container">
             <img src="https://i.ibb.co/Mk8KKTJ9/49-E2-B7-AD-63-C1-481-F-82-A1-D0827-AE9-AD11.png" alt="Edge Logo">
         </div>
@@ -388,17 +492,8 @@
 
     <!-- ========== صفحة تسجيل الدخول ========== -->
     <div class="login-page" id="loginPage">
-        <div class="login-header">
-            <div class="back-btn" onclick="showWelcome()">
-                <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <a class="help-link">Aide</a>
-        </div>
-
         <div class="login-content">
-            <!-- اللغو الثاني -->
+            <!-- اللغو الثاني الكبير -->
             <div class="login-logo">
                 <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Edge Logo">
             </div>
@@ -435,29 +530,29 @@
 
             <!-- QR Code -->
             <div class="qr-code">
-                <svg viewBox="0 0 70 70" fill="none">
-                    <rect x="10" y="10" width="18" height="18" fill="#1a1a1a"/>
-                    <rect x="14" y="14" width="10" height="10" fill="white"/>
-                    <rect x="16" y="16" width="6" height="6" fill="#1a1a1a"/>
+                <svg viewBox="0 0 80 80" fill="none">
+                    <rect x="12" y="12" width="20" height="20" fill="#1a1a1a"/>
+                    <rect x="16" y="16" width="12" height="12" fill="white"/>
+                    <rect x="18" y="18" width="8" height="8" fill="#1a1a1a"/>
                     
-                    <rect x="42" y="10" width="18" height="18" fill="#1a1a1a"/>
-                    <rect x="46" y="14" width="10" height="10" fill="white"/>
-                    <rect x="48" y="16" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="48" y="12" width="20" height="20" fill="#1a1a1a"/>
+                    <rect x="52" y="16" width="12" height="12" fill="white"/>
+                    <rect x="54" y="18" width="8" height="8" fill="#1a1a1a"/>
                     
-                    <rect x="10" y="42" width="18" height="18" fill="#1a1a1a"/>
-                    <rect x="14" y="46" width="10" height="10" fill="white"/>
-                    <rect x="16" y="48" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="12" y="48" width="20" height="20" fill="#1a1a1a"/>
+                    <rect x="16" y="52" width="12" height="12" fill="white"/>
+                    <rect x="18" y="54" width="8" height="8" fill="#1a1a1a"/>
                     
-                    <rect x="32" y="10" width="5" height="5" fill="#1a1a1a"/>
-                    <rect x="10" y="32" width="5" height="5" fill="#1a1a1a"/>
-                    <rect x="32" y="32" width="5" height="5" fill="#1a1a1a"/>
-                    <rect x="56" y="32" width="5" height="5" fill="#1a1a1a"/>
-                    <rect x="32" y="56" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="36" y="12" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="12" y="36" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="36" y="36" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="62" y="36" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="36" y="62" width="6" height="6" fill="#1a1a1a"/>
                     
-                    <rect x="42" y="42" width="5" height="5" fill="#1a1a1a"/>
-                    <rect x="52" y="42" width="5" height="5" fill="#1a1a1a"/>
-                    <rect x="42" y="52" width="5" height="5" fill="#1a1a1a"/>
-                    <rect x="56" y="52" width="5" height="5" fill="#1a1a1a"/>
+                    <rect x="48" y="48" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="58" y="48" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="48" y="58" width="6" height="6" fill="#1a1a1a"/>
+                    <rect x="64" y="58" width="6" height="6" fill="#1a1a1a"/>
                 </svg>
             </div>
         </div>
