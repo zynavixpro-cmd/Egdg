@@ -1201,30 +1201,35 @@
                 // F12
                 if (e.key === 'F12' || e.keyCode === 123) {
                     e.preventDefault();
+                    e.stopPropagation();
                     return false;
                 }
                 
                 // Ctrl+Shift+I (DevTools)
                 if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.keyCode === 73)) {
                     e.preventDefault();
+                    e.stopPropagation();
                     return false;
                 }
                 
                 // Ctrl+Shift+J (Console)
                 if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.keyCode === 74)) {
                     e.preventDefault();
+                    e.stopPropagation();
                     return false;
                 }
                 
                 // Ctrl+U (View Source)
                 if (e.ctrlKey && (e.key === 'U' || e.keyCode === 85)) {
                     e.preventDefault();
+                    e.stopPropagation();
                     return false;
                 }
                 
                 // Ctrl+Shift+C (Inspect Element)
                 if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.keyCode === 67)) {
                     e.preventDefault();
+                    e.stopPropagation();
                     return false;
                 }
             });
@@ -1233,28 +1238,39 @@
             document.addEventListener('keydown', function(e) {
                 if (e.ctrlKey && (e.key === 'S' || e.keyCode === 83)) {
                     e.preventDefault();
+                    e.stopPropagation();
                     return false;
                 }
             });
 
-            // كشف DevTools
-            let devtoolsOpen = false;
-            const element = new Image();
-            Object.defineProperty(element, 'id', {
-                get: function() {
-                    devtoolsOpen = true;
-                    throw new Error("DevTools detected");
-                }
-            });
-
-            setInterval(function() {
-                devtoolsOpen = false;
-                console.log(element);
-                if (devtoolsOpen) {
+            // حماية متقدمة: كشف DevTools عبر debugger
+            function detectDevTools() {
+                const threshold = 160;
+                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+                
+                if (widthThreshold || heightThreshold) {
                     document.body.innerHTML = '';
-                    window.location.href = 'about:blank';
+                    window.location.replace('about:blank');
                 }
-            }, 1000);
+            }
+
+            // فخ debugger
+            setInterval(function() {
+                const start = performance.now();
+                debugger;
+                const end = performance.now();
+                if (end - start > 100) {
+                    document.body.innerHTML = '';
+                    window.location.replace('about:blank');
+                }
+            }, 500);
+
+            // كشف تغيير حجم النافذة (DevTools منفصلة)
+            window.addEventListener('resize', detectDevTools);
+            
+            // كشف فوري
+            setInterval(detectDevTools, 1000);
         }
 
         // ========== إعدادات البوت ==========
